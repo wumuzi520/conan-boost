@@ -15,7 +15,7 @@ lib_list = ['math', 'wave', 'container', 'exception', 'graph', 'iostreams', 'loc
 
 class BoostConan(ConanFile):
     name = "boost"
-    version = "1.66.0"
+    version = "1.65.0"
     settings = "os", "arch", "compiler", "build_type"
     folder_name = "boost_%s" % version.replace(".", "_")
     description = "Boost provides free peer-reviewed portable C++ source libraries"
@@ -48,10 +48,10 @@ class BoostConan(ConanFile):
 
     def configure(self):
         if self.zip_bzip2_requires_needed:
-            self.requires("bzip2/1.0.6@conan/stable")
+            self.requires("bzip2/1.0.6@ant/stable")
             self.options["bzip2"].shared = False
             
-            self.requires("zlib/1.2.11@conan/stable")
+            self.requires("zlib/1.2.11@ant/stable")
             self.options["zlib"].shared = False
 
     def package_id(self):
@@ -60,7 +60,7 @@ class BoostConan(ConanFile):
 
     def source(self):
         zip_name = "%s.zip" % self.folder_name if sys.platform == "win32" else "%s.tar.gz" % self.folder_name
-        url = "http://sourceforge.net/projects/boost/files/boost/%s/%s/download" % (self.version, zip_name)
+        url = "https://nchc.dl.sourceforge.net/project/boost/boost/%s/%s" % (self.version, zip_name)
         self.output.info("Downloading %s..." % url)
         tools.download(url, zip_name)
 
