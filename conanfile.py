@@ -14,7 +14,7 @@ lib_list = ['math', 'wave', 'container', 'exception', 'graph', 'iostreams', 'loc
 
 
 class BoostConan(ConanFile):
-    name = "boost"
+    name = "Boost"
     version = "1.65.0"
     settings = "os", "arch", "compiler", "build_type"
     folder_name = "boost_%s" % version.replace(".", "_")
